@@ -1,30 +1,30 @@
 # spring-boot-security
 1. MySql 계정 생성.
-    create user 'id'@'%' identified by 'pw';
-    grant all privileges on *.* to 'id'@'%';
-    create database security;
-    use security;
+    - create user 'id'@'%' identified by 'pw';
+    - grant all privileges on *.* to 'id'@'%';
+    - create database security;
+    - use security;
 
 2. Spring Boot Project
-    Spring Boot DevTools
-    // Lombok // init error
-    Spring Data JPA
-    MySQL Driver
-    Spring Security
-    Mustache
-    Spring Web
+    - Spring Boot DevTools
+    - // Lombok // init error
+    - Spring Data JPA
+    - MySQL Driver
+    - Spring Security
+    - Mustache
+    - Spring Web
 
 3. Spring boot init Error
-    추가
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-    변경
-        <java.version>1.8</java.version>
-    변경
-        <version>2.4.9</version>
+    - 추가
+- 		<dependency>
+- 			<groupId>org.projectlombok</groupId>
+- 			<artifactId>lombok</artifactId>
+- 			<optional>true</optional>
+- 		</dependency>
+-   변경
+-       <java.version>1.8</java.version>
+-   변경
+-       <version>2.4.9</version>
 
 [New]
 4. google api console 이동
