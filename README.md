@@ -34,16 +34,16 @@
     - 애플리케이션명, 이메일 적고 > 저장.
     - 사용자 인증정보
     - 사용자 인증정보 만들기 > OAuth 클라이언트 ID 만들기
-        - 유형: 웹애플리케이션
-        - 이름: springboot-oauth
-        - 리다이렉션URL: http://localhost:8888/login/oauth2/code/google
-            - 구글 로그인 완료> 구글서버에서 코드를 돌려줌.
-            - 코드를 통해 Access Token을 요청
-            - Access Token은 고객이 google의 접근할 수있는 Token
-            - 해당 코드를 받을수 있는 URL
-            - 이 주소("/login/oauth2/code")는 고정.
-            - 해당 URL의 Controller를 만들 필요는 없음. 라이브러리가 처리
-        - 만들기
+      - 유형: 웹애플리케이션
+      - 이름: springboot-oauth
+      - 리다이렉션URL: http://localhost:8888/login/oauth2/code/google
+        - 구글 로그인 완료> 구글서버에서 코드를 돌려줌.
+        - 코드를 통해 Access Token을 요청
+        - Access Token은 고객이 google의 접근할 수있는 Token
+        - 해당 코드를 받을수 있는 URL
+        - 이 주소("/login/oauth2/code")는 고정.
+        - 해당 URL의 Controller를 만들 필요는 없음. 라이브러리가 처리
+      - 만들기
 
 5. 해당 라이브러리 다운.
     - springboot oauth
