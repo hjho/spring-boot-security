@@ -1,6 +1,11 @@
 Json Web Token
   - 메이븐에서 JWT 라이브러리 다운.
-	- Java JWT 3.10.2
+    - Java JWT 3.10.2
+  - https://jwt.io/introduction
+    - JWT를 암호화하여 당사자 간에 비밀을 제공할 수도 있지만 서명 된 토큰에 중점을 둘 것입니다. 
+    - 서명된 토큰은 그 안에 포함된 클레임의 무결성 을 확인할 수 있는 반면 
+    - 암호화된 토큰은 이러한 클레임을 다른 당사자로부터 숨길 수 있습니다. 
+    - 공개/개인 키 쌍을 사용하여 토큰에 서명할 때 서명은 개인 키를 보유하고 있는 당사자만 서명했음을 증명합니다.
 
 SecurityFilterChain
   1. SecurityContextPersistenceFilter
@@ -14,3 +19,60 @@ SecurityFilterChain
   9. SessionManagementFilter
   10. ExceptionTranslationFilter
   11. FilterSecurityInterceptor
+
+JWT에서 중요!
+  1. JWT는 세부분으로 나뉨.
+    - HEADER.PAYLOAD.SIGNATURE
+    - HEADER: ALGORITHM & TOKEN TYPE
+    - PAYLOAD: DATA
+    - SIGNATURE: VERIFY
+    
+  2. HEADER
+    - 시그니처의 알고리즘과 타입.
+    - HS256: HMAC SHA256 방식.
+    {
+      "alg": "HS256",
+      "typ": "JWT"
+    }
+    
+  3. PAYLOAD
+    - 데이터를 의미 한다.
+    {
+      "sub": "1234567890",
+      "name": "John Doe",
+      "iat": 1516239022
+    }
+    
+  4. SIGNATURE
+    - header와 payload를 base64 encode한 데이터와 특정 secret code로
+    - 위에서 정의한 "HS256" 알고리즘으로 암호화 한다.
+    - 그 후 통째로 base64 encode하여 SIGNATURE를 만듬.
+      HMACSHA256(
+        base64UrlEncode(header) + "." +
+        base64UrlEncode(payload),
+        SecretCode
+      )
+      
+  5. JWT의 HEADER.PAYLOAD.SIGNATURE
+    - JWT는 기본적으로 base64 인코딩으로 header와 payload의 데이터는 쉽게 노출된다.
+    - 하지만 Basic 방식인 ID, PW의 인증은 노출되면 큰일이라 Bearer 방식의 토큰 노출이 보다 나음(만료가 되니까). 
+    - JWT 노출되는 데이터의 문제라긴 보단.
+    - SIGNATURE의 검증으로 누가 만들었다! 의 "전자서명 개념"
+      - HS256의 검증 방식은.
+        - 요청받은 JWT의 HEADER.PAYLOAD와 정의된 SecretCode로 암호화하여 시그니처와 비교한다.
+        - 요청받은 JWT의 SIGNATURE와 암호화한 SIGNATURE가 동일하다면 내가만든 JWT가 맞구나! 로 검증.
+        - 요청받은 JWT의 SIGNATURE와 암호화한 SIGNATURE가 동일하지 않다면. 
+          - HEADER 나 PAYLOAD가 변조 되었다는 걸 의미한다.
+      - RSA의 검증 방식은.
+        - 개인키로 HEADER.PAYLOAD를 SIGNATURE를 만들어 암호화하여 토큰을 발급하고, 
+        - 공개키로 SIGNATURE를 복호화하여 검증한다!
+        - sign 함수는 어떤 것이 공개키이고, 어떤 것이 개인키인지 여부를 start line 플래그를 통해 확인
+        - RSA KEY GENERATOR: https://travistidwell.com/jsencrypt/demo/
+          
+    - JWT DOCUMENT: 서명된 토큰을 사용하면 토큰에 포함된 모든 정보가 변경할 수 없는 경우에도 사용자 또는 다른 당사자에게 노출됩니다. 즉, 토큰 안에 비밀 정보를 넣으면 안 됩니다.
+  
+  6. AES(대칭키)방식으로 JWT TOKEN 자체를 암호화 한다면,,,
+    - 토큰안에 값도 지킬수 잇지 않나 싶다. 
+    
+    
+	
