@@ -1,0 +1,16 @@
+Json Web Token
+  - 메이븐에서 JWT 라이브러리 다운.
+	- Java JWT 3.10.2
+
+SecurityFilterChain
+  1. SecurityContextPersistenceFilter
+  2. LogoutFilter
+  3. UsernamePasswordAuthenticationFilter
+  4. DefaultLoginPageGeneratingFilter
+  5. BasicAuthenticationFilter
+  6. RememberMeAuthenticationFilter
+  7. SecurityContextHolderAwareRequestFilter
+  8. AnonymousAuthenticationFilter
+  9. SessionManagementFilter
+  10. ExceptionTranslationFilter
+  11. FilterSecurityInterceptor
