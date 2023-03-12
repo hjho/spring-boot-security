@@ -24,24 +24,24 @@ spring:
         registration:
           # Google
           google:
-            client-id: 719343391993-hhaqgvn1djl50946vkderhd2t6hkhc10.apps.googleusercontent.com
-            client-secret: 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
+            client-id: deleted apps
+            client-secret: deleted apps
             scope:
             - email
             - profile
             #redirect-uri: http://localhost:8888/login/oauth2/code/google
           # Facebook
           facebook:
-            client-id: 1685529365138105
-            client-secret: e54ab82746457ca1f6751d05c67a3e25
+            client-id: deleted apps
+            client-secret: deleted apps
             scope:
             - email
             - public_profile
             #redirect-uri: http://localhost:8888/login/oauth2/code/facebook
           # Naver
           naver: # ERROR MESSAGE: Provider ID must be specified for client registration 'naver'
-            client-id: AoCKP48253RMy_uSzEK4
-            client-secret: RV5WxMdEKT
+            client-id: deleted apps
+            client-secret: deleted apps
             scope:
             - name
             - email
